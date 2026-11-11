@@ -1,1 +1,479 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087c55">
+  <title>SafiriQ | Smart Queue Management</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f7f5;
+      color: #172c25;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #087c55;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #b9f6d7;
+    }
+
+    header p {
+      font-size: 13px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #087c55, #064c39);
+      color: white;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 7vw, 46px);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin: auto;
+      color: #e1f5eb;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 35px auto;
+      padding: 0 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: #087c55;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 7px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d5e2dc;
+      border-radius: 9px;
+      font-size: 16px;
+      background: white;
+    }
+
+    button {
+      border: none;
+      padding: 14px 20px;
+      border-radius: 9px;
+      background: #087c55;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 18px;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #056644;
+    }
+
+    .secondary {
+      background: #e9f5ee;
+      color: #087c55;
+    }
+
+    .secondary:hover {
+      background: #d8eddf;
+    }
+
+    .ticket {
+      display: none;
+      border: 2px dashed #087c55;
+      text-align: center;
+      background: #effaf3;
+    }
+
+    .ticket-number {
+      font-size: 55px;
+      font-weight: bold;
+      color: #087c55;
+      margin: 12px 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      background: #eff8f2;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      color: #087c55;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .info {
+      color: #64756c;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #073d2d;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 45px;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 45px 18px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Safiri<span>Q</span></div>
+  <p>Smart Queue Management</p>
+</header>
+
+<section class="hero">
+  <h1>Your Time Matters.</h1>
+  <p>
+    Join a digital queue, track your waiting position
+    and spend less time waiting at customer service shops.
+  </p>
+</section>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Join a Queue</h2>
+    <p>Select your preferred shop and the service you need.</p>
+
+    <label for="shop">Select Shop</label>
+    <select id="shop">
+      <option value="">Choose a shop</option>
+      <option value="Nairobi CBD">Nairobi CBD</option>
+      <option value="Westlands">Westlands</option>
+      <option value="Thika">Thika</option>
+      <option value="Mombasa">Mombasa</option>
+      <option value="Kisumu">Kisumu</option>
+      <option value="Nakuru">Nakuru</option>
+      <option value="Garissa">Garissa</option>
+    </select>
+
+    <label for="service">Select Service</label>
+    <select id="service">
+      <option value="">Choose a service</option>
+      <option value="SIM Replacement">SIM Replacement</option>
+      <option value="M-PESA Support">M-PESA Support</option>
+      <option value="SIM Registration">SIM Registration</option>
+      <option value="Airtime and Bundles">Airtime and Bundles</option>
+      <option value="Customer Support">Customer Support</option>
+      <option value="Other Services">Other Services</option>
+    </select>
+
+    <label for="customer">Your Name (Optional)</label>
+    <input type="text" id="customer" placeholder="Enter your name">
+
+    <button onclick="joinQueue()">Get My Queue Number</button>
+
+    <p class="info">
+      Demo version: queue numbers are stored in this browser only.
+    </p>
+  </section>
+
+  <section class="card ticket" id="ticket">
+    <h2>Your Queue Ticket</h2>
+    <p>Your queue number is:</p>
+
+    <div class="ticket-number" id="ticketNumber">SQ001</div>
+
+    <p id="ticketShop"></p>
+    <p id="ticketService"></p>
+    <p id="ticketName"></p>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="position">1</strong>
+        Your Position
+      </div>
+
+      <div class="stat">
+        <strong id="waiting">0</strong>
+        People Ahead
+      </div>
+    </div>
+
+    <button class="secondary" onclick="updatePosition()">
+      Refresh Queue Position
+    </button>
+
+    <button class="secondary" onclick="cancelTicket()">
+      Cancel Ticket
+    </button>
+  </section>
+
+  <section class="card">
+    <h2>Why Use SafiriQ?</h2>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>01</strong>
+        Join Digitally
+      </div>
+
+      <div class="stat">
+        <strong>02</strong>
+        Track Your Queue
+      </div>
+
+      <div class="stat">
+        <strong>03</strong>
+        Save Time
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Staff Dashboard (Demo)</h2>
+    <p>Demonstration of basic queue management.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="totalCustomers">0</strong>
+        Customers Waiting
+      </div>
+
+      <div class="stat">
+        <strong id="servedCustomers">0</strong>
+        Customers Served
+      </div>
+    </div>
+
+    <button onclick="serveNext()">Call Next Customer</button>
+    <p id="staffMessage" class="info">
+      No customer has been served yet.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 SafiriQ | Smart Queue Management</p>
+  <p>Making customer service smarter.</p>
+  <p class="info">Independent prototype. Not affiliated with Safaricom.</p>
+</footer>
+
+<script>
+  let queue = JSON.parse(
+    localStorage.getItem("safiriqQueue")
+  ) || [];
+
+  let served = Number(
+    localStorage.getItem("safiriqServed")
+  ) || 0;
+
+  let currentTicket = null;
+
+  function saveQueue() {
+    localStorage.setItem(
+      "safiriqQueue",
+      JSON.stringify(queue)
+    );
+
+    localStorage.setItem(
+      "safiriqServed",
+      served
+    );
+  }
+
+  function renderDashboard() {
+    document.getElementById("totalCustomers").textContent =
+      queue.length;
+
+    document.getElementById("servedCustomers").textContent =
+      served;
+  }
+
+  function joinQueue() {
+    const shop = document.getElementById("shop").value;
+    const service = document.getElementById("service").value;
+    const name = document.getElementById("customer").value.trim();
+
+    if (!shop || !service) {
+      alert("Please select a shop and a service.");
+      return;
+    }
+
+    const shopQueue = queue.filter(
+      customer => customer.shop === shop
+    );
+
+    const nextNumber = shopQueue.length + 1;
+
+    const ticket = {
+      id: Date.now(),
+      number: "SQ" + String(nextNumber).padStart(3, "0"),
+      shop: shop,
+      service: service,
+      name: name || "Guest",
+      status: "waiting"
+    };
+
+    queue.push(ticket);
+    currentTicket = ticket.id;
+
+    saveQueue();
+
+    document.getElementById("ticketNumber").textContent =
+      ticket.number;
+
+    document.getElementById("ticketShop").textContent =
+      "Shop: " + shop;
+
+    document.getElementById("ticketService").textContent =
+      "Service: " + service;
+
+    document.getElementById("ticketName").textContent =
+      "Customer: " + ticket.name;
+
+    document.getElementById("ticket").style.display = "block";
+
+    updatePosition();
+    renderDashboard();
+
+    document.getElementById("ticket").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+  function updatePosition() {
+    const ticket = queue.find(
+      customer => customer.id === currentTicket
+    );
+
+    if (!ticket) {
+      alert("Your ticket is no longer active.");
+      return;
+    }
+
+    const ahead = queue.filter(customer =>
+      customer.shop === ticket.shop &&
+      customer.id !== ticket.id &&
+      customer.status === "waiting" &&
+      customer.id < ticket.id
+    ).length;
+
+    document.getElementById("waiting").textContent = ahead;
+    document.getElementById("position").textContent = ahead + 1;
+  }
+
+  function cancelTicket() {
+    if (!currentTicket) return;
+
+    queue = queue.filter(
+      customer => customer.id !== currentTicket
+    );
+
+    currentTicket = null;
+
+    saveQueue();
+    renderDashboard();
+
+    document.getElementById("ticket").style.display = "none";
+
+    alert("Your queue ticket has been cancelled.");
+  }
+
+  function serveNext() {
+    if (queue.length === 0) {
+      document.getElementById("staffMessage").textContent =
+        "There are no waiting customers.";
+      return;
+    }
+
+    const next = queue.shift();
+    served++;
+
+    saveQueue();
+    renderDashboard();
+
+    document.getElementById("staffMessage").textContent =
+      "Now serving " + next.number +
+      " at " + next.shop +
+      " for " + next.service + ".";
+    
+    if (currentTicket === next.id) {
+      currentTicket = null;
+      document.getElementById("ticket").style.display = "none";
+      alert("Your turn has been called!");
+    } else {
+      updatePosition();
+    }
+  }
+
+  renderDashboard();
+</script>
+
+</body>
+  </html>
+  
