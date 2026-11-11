@@ -1,1 +1,181 @@
 
+/* SAFIRIQ - SMART QUEUE MANAGEMENT */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f7f5;
+  color: #172c25;
+  line-height: 1.6;
+}
+
+header {
+  background: #087c55;
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #b9f6d7;
+}
+
+header p {
+  font-size: 13px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #087c55, #064c39);
+  color: white;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 7vw, 46px);
+  margin-bottom: 12px;
+}
+
+.hero p {
+  max-width: 550px;
+  margin: auto;
+  color: #e1f5eb;
+}
+
+.container {
+  max-width: 1050px;
+  margin: 35px auto;
+  padding: 0 18px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+  color: #087c55;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 15px 0 7px;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d5e2dc;
+  border-radius: 9px;
+  font-size: 16px;
+  background: white;
+}
+
+button {
+  border: none;
+  padding: 14px 20px;
+  border-radius: 9px;
+  background: #087c55;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 18px;
+  width: 100%;
+}
+
+button:hover {
+  background: #056644;
+}
+
+.secondary {
+  background: #e9f5ee;
+  color: #087c55;
+}
+
+.secondary:hover {
+  background: #d8eddf;
+}
+
+.ticket {
+  display: none;
+  border: 2px dashed #087c55;
+  text-align: center;
+  background: #effaf3;
+}
+
+.ticket-number {
+  font-size: 55px;
+  font-weight: bold;
+  color: #087c55;
+  margin: 12px 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat {
+  background: #eff8f2;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 25px;
+  color: #087c55;
+}
+
+.hidden {
+  display: none;
+}
+
+.info {
+  color: #64756c;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+footer {
+  background: #073d2d;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 45px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 45px 18px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+  }
+
